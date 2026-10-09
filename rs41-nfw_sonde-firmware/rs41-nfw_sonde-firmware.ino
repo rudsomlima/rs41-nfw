@@ -32,6 +32,7 @@ Author of RS41-NFW
 /* No libraries are required to be installed, all dependencies are shipped within the project folder. */
 #include "horus_l2.h"
 //#include "horus_l2.cpp"
+#include <Arduino.h>
 #include <SPI.h>
 #include "gps.h"
 #include "HorusBinaryV3.h"
@@ -51,7 +52,7 @@ TinyGPSPlus gps;
 /* CHANGE-ME! SELECT YOUR BOARD REVISION BY UNCOMMENTING THE RIGHT DEFINITION BELOW (model can be found written on the PCB at the bottom part, see compilation manual for more info)*/
  
 // #define RSM4x4 // New PCB versions, RSM4x4 AND RSM4x5 (based on MCU STM32L412RBT6 LQFP64)
-// #define RSM4x2  // Old PCB versions, RSM4x2 and RSM4x1 (based on MCU STM32F100C8T6B LQFP48)
+#define RSM4x2  // Old PCB versions, RSM4x2 and RSM4x1 (based on MCU STM32F100C8T6B LQFP48)
 
 
 
@@ -287,7 +288,7 @@ constexpr int8_t aprsRadioPower = 7;               // TX power, 0 = -1dBm (~0.8m
 #define CALLSIGN "N0CALL"             // Callsign used for morse and rtty
 
 bool rttyEnable = false;              // Enable rtty tx mode, compliant with UKHAS format
-constexpr float rttyFrequencyMhz = 434.6;       // RTTY tx frequency
+constexpr float rttyFrequencyMhz = 430.43;       // RTTY tx frequency
 constexpr uint16_t rttyBitDelay = 10000;             // RTTY delay between transmitted bits - 22000 ~= 45bdrate, 13333 ~= 75bdr, 10000 ~= 100bdr
 constexpr uint8_t rttyBits = 7;                     // RTTY 7 = 7bit character, 8 = 8bit character
 constexpr uint8_t rttyStopBits = 2;               // RTTY stop bits (1, 1.5, 2)
@@ -297,7 +298,7 @@ constexpr int8_t rttyRadioPower = 7;               // TX power, 0 = -1dBm (~0.8m
 
 // Morse:
 bool morseEnable = false;             // Enable morse tx mode
-constexpr float morseFrequencyMhz = 434.6;      // Morse tx frequency
+constexpr float morseFrequencyMhz = 430.43;      // Morse tx frequency
 constexpr uint16_t morseUnitTime = 40;               // Morse unit time
 constexpr int8_t morseRadioPower = 7;              // TX power, 0 = -1dBm (~0.8mW), 1 = 2dBm (~1.6mW), 2 = 5dBm (~3 mW), 3 = 8dBm (~6 mW), 4 = 11dBm (~12 mW), 5 = 14dBm (25 mW), 6 = 17dBm (50 mW), 7 = 20dBm (100 mW)
 
