@@ -1,4 +1,9 @@
 {
+  "git.showActionButton": {
+    "commit": true,
+    "publish": true,
+    "sync": true
+  },
   "files.associations": {
     "*.ino": "cpp"
   },
